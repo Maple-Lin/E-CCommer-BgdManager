@@ -217,12 +217,14 @@ export default {
       this.total = res.data.total;
     }    
     },
+
     // 监听pagesize改变事件
     handleSizeChange: function(val) {
         // console.log(`每页 ${val} 条`);
         this.queryInfo.pagesize = val;
         this.getuserList();
       },
+
     // 监听页码值改变事件
     handleCurrentChange: function(val) {
         // console.log(`当前页: ${val}`);
@@ -300,6 +302,7 @@ export default {
         }).catch(err => {
           return err;
         });
+
         // 确认：confirm   取消： cancel
         if(result !== 'confirm') {
           return this.$message.info('已取消删除');
@@ -319,6 +322,7 @@ export default {
         this.rolesList = res.data;
         this.setRolesDialogVisible = true;
       },
+
       // 角色分配
       saveRoleInfo: async function() {
         const { data: res } = await this.$axios.put(`users/${this.userInfo.id}/role`, {rid: this.selectedRoleId});
@@ -327,6 +331,7 @@ export default {
         this.$message.success('角色分配成功');
         this.setRolesDialogVisible = false;
       },
+
       // 重置角色对话框数据
       setRoleDialogClosed: function() {
         this.userInfo = {};
