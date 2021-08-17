@@ -4,6 +4,8 @@ import Login from '../components/Login.vue'
 import Home from '../components/Home.vue'
 import Welcome from '../components/Welcome.vue'
 import User from '../components/users/User.vue'
+import Rights from '../components/power/Rights.vue'
+import Roles from '../components/power/Roles.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -15,6 +17,8 @@ const routes = [
     children: [
       {path: '/welcome', component: Welcome},
       {path: '/users', component: User},
+      {path: '/rights', component: Rights},
+      {path: '/roles', component: Roles},
     
     ]
   },
@@ -25,7 +29,7 @@ const router = createRouter({
   routes
 });
 
-//登录守卫
+//导航全局前置守卫
 router.beforeEach((to, from, next) => {//to：将要访问的路径，from：代表从哪个路径跳转而来，next:function 方形  next('/xxx):强制跳转到xxx
   if(to.path == '/login')   return next();
   const sessionStorageStr = window.sessionStorage.getItem('token');
