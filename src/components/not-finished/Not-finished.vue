@@ -1,9 +1,9 @@
 <template>
-    <img class="pic-welcome" src="../assets/Welcome.png" alt="">
+    <img class="pic-notFinished" src="../../assets/notFinished.png">
 </template>
 
 <style lang="less" scoped>
-  .pic-welcome {
+  .pic-notFinished {
     position: absolute;
     height: 100%;
     width: 100%;

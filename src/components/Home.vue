@@ -49,7 +49,7 @@
         <router-view></router-view>
       </el-main>
       <!-- 底边区域 -->
-      <el-footer>Footer</el-footer>
+      <!-- <el-footer>Footer</el-footer> -->
     </el-container>
   </el-container>
 </el-container>
@@ -190,6 +190,7 @@ export default {
   }
 
   .el-main {
+    position: relative;
     background-color: #eaedf1;
   }
   .el-footer {

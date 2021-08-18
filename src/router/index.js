@@ -6,6 +6,8 @@ import Welcome from '../components/Welcome.vue'
 import User from '../components/users/User.vue'
 import Rights from '../components/power/Rights.vue'
 import Roles from '../components/power/Roles.vue'
+import NotFinished from '../components/not-finished/Not-finished.vue'
+import Reports from '../components/reports/Reports.vue'
 
 const routes = [
   { path: '/', redirect: '/login' },
@@ -19,6 +21,12 @@ const routes = [
       {path: '/users', component: User},
       {path: '/rights', component: Rights},
       {path: '/roles', component: Roles},
+
+      {path: '/goods', component: NotFinished},
+      {path: '/params', component: NotFinished},
+      {path: '/categories', component: NotFinished},
+      {path: '/orders', component: NotFinished},
+      {path: '/reports', component: Reports},
     
     ]
   },
