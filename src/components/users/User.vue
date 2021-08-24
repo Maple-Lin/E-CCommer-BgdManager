@@ -209,7 +209,6 @@ export default {
     // 获取用户数据
     getuserList: async function() {
       const { data: res } = await this.$axios.get('users', { params: this.queryInfo });
-      // console.log(res);
     if(res.meta.status !== 200 ){
       return this.$message.error('获取数据失败！');
     } else{
@@ -219,20 +218,17 @@ export default {
     },
     // 监听pagesize改变事件
     handleSizeChange: function(val) {
-        // console.log(`每页 ${val} 条`);
         this.queryInfo.pagesize = val;
         this.getuserList();
       },
     // 监听页码值改变事件
     handleCurrentChange: function(val) {
-        // console.log(`当前页: ${val}`);
         this.queryInfo.pagenum = val;
         this.getuserList();
       },
 
       // 用户switch开关状态改变
       userStatusChanged: async function(userInfo) {
-        // console.log(userInfo);
         const {data: res} = await this.$axios.put(`users/${userInfo.id}/state/${userInfo.mg_state}`);
         if(res.meta.status !== 200){
           userInfo.mg_state = !userInfo.mg_state;//修改不成功，switch状态不变
@@ -250,10 +246,8 @@ export default {
       // 确认添加用户
       addUser:  function() {
         this.$refs.addFormRef.validate( async valid => {
-          console.log(valid);
           if(!valid)  return this.$message.error('输入错误，请重新输入！');
             const { data: res } = await this.$axios.post('users', this.addForm);
-            console.log(res);
             this.addDialogVisible = false;
             this.getuserList();
 
@@ -276,7 +270,6 @@ export default {
       // 修改用户预验证
       editUser: function() {
         this.$refs.editFormRef.validate( async valid => {
-          // console.log(valid);
           if(!valid)  return this.$message.error('修改失败，请重新输入！');
           // 验证格式成功，提交修改内容
             const { data: res } = await this.$axios.put('users/' + this.editForm.id, 
@@ -305,7 +298,6 @@ export default {
           return this.$message.info('已取消删除');
         }
         const { data: res } = await this.$axios.delete('users/' + id);
-        console.log(res);
         if(res.meta.status !== 200) return this.$message.info('删除失败!');
         this.$message.success('删除用户成功');
         this.getuserList();
@@ -318,6 +310,7 @@ export default {
         if(res.meta.status !== 200)   return this.$message.error('获取角色列表失败！');
         this.rolesList = res.data;
         this.setRolesDialogVisible = true;
+        console.log(res.data);
       },
       // 角色分配
       saveRoleInfo: async function() {

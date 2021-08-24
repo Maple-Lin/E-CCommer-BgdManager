@@ -60,28 +60,25 @@
     },
 
     methods: {
-      submitForm(formName) {
+      submitForm: function(formName) {
         this.$refs[formName].validate( async (valid) => {
           if (valid) {
-            // console.log('Success submit');
             const {data: res} = await this.$axios.post('login', this.loginForm); 
-            if(res.meta.status != 200){
+            if(res.meta.status !== 200){
               this.$message.error('登录失败,请重新输入...');
             }else{
               this.$message.success('登录成功');
               window.sessionStorage.setItem("token", res.data.token);
-              this.$router.push('/home');
+              this.$router.push('/home'); 
             }
           } else {
-            // console.log('error submit!!');
             return false;
           }
         });
       },
 
-      resetForm(formName) {
-        // console.log(this.$refs);
-    this.$refs[formName].resetFields();
+      resetForm: function(formName1) {
+      this.$refs[formName1].resetFields();
       }
     }
   };
@@ -119,7 +116,7 @@
         transform: translate(-50%);
         z-index: 1;
         overflow: hidden;
-        img {
+        >img {
           width: 100%;
           height: 100%;
           background-color: #ddd;
