@@ -1,24 +1,34 @@
-# test_02
+# E-Commerce-Backstage-Management
 
-## Project setup
+## 项目介绍
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+该项目整体采用前后端分离的开发模式，其中前端项目是基于Vue技术栈的SPA项目，开发版本中加入响应式布局；实现了登录、用户列表、权限管理、数据统计等功能，并对项目进行优化上线。
+技术栈：Vue3.0+Vue-router+Element-UI+Axios+Echarts
 ```
 
-### Compiles and minifies for production
+### 登录模块  
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+1.使用 session 进行鉴权，由于服务端用CORS来开启跨域支持，选用token来预防 csrf 攻击;
+2.将token存储入sessionStorage 中,并使用精灵图，从而降低HTTP请求，减少服务器压力；
+3.使用导航全局前置守卫进行页面权限跳转。
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 用户列表模块
+```
+1.通过请求拦截器添加token来识别身份，保证拥有获取数据权限；
+2.采用全局注册axios属性，便于组件开发，并做异步简化Promise处理，实现异步页面无刷新抽取数据，同步校验数据，提高用户体验；
+3.将获取数据渲染至Element-UI组件，实现菜单栏、用户列表、分页和用户信息操作等功能。
+```
+
+### 角色权限和数据报表
+```
+1.数据的增删改查，使用Echarts绘制折线图；
+2.只传输被修改过的值，降低请求实体大小，提升用户体验。
+```
+
+### 项目优化及上线
+```
+1.首页内容定制，并采用chainWebpack修改webpack默认配置；使用chainWebpack分离项目开发和发布模式的打包入口；
+2.生成打包报告，通过externals节点加载外部CDN资源和CDN优化Element-UI打包，减小文件体积；
+3.路由懒加载，使用Zgip减小传输文件体积，来使提高传输速率。
+```
