@@ -7,21 +7,22 @@
        <a title="奋勇不息，砥砺前行">
         <img src="../assets/head.png" alt="logo">
       </a>
-      <div class="QRcode">
+    </div>
+
+    <!-- 用户头像 -->
+    <div class="avatar">
+      <a ><img src="../assets/avatar.jpg" alt=""></a>
+       <div class="QRcode">
         <i></i>
         <img src="../assets/myQR.jpg" alt="">
       </div>
-    </div>
-    <!-- 用户头像 -->
-    <div class="avatar">
-      <a class="avatar"><img src="" alt=""></a>
     </div>
     
   </el-header>
   <!-- 主体 -->
   <el-container>
     <!-- 侧边区域 -->
-    <el-aside :width="isCollaps ? '64px': '200px'">
+    <el-aside :width="isCollaps ? '64px': '15%'">
       <el-menu background-color="#0c1225" text-color="#fff" active-text-color="#409bff" unique-opened 
       :collapse="isCollaps" collapse-transition="false" router :default-active="activePath">
         <div class="toggle-btn" @click="toggleCollapse">|||</div>
@@ -49,7 +50,10 @@
         <router-view></router-view>
       </el-main>
       <!-- 底边区域 -->
+<<<<<<< HEAD
       <!-- <el-footer>Footer</el-footer> -->
+=======
+>>>>>>> power
     </el-container>
   </el-container>
 </el-container>
@@ -126,18 +130,31 @@ export default {
           border-radius: 50%;
         }
       }
+    }
+    .avatar {
+      position: absolute;
+      right: 10%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      >a >img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
       .QRcode {
         position: absolute;
         width: 150px;
         height: 150px;
-        left: 0%;
-        bottom: -323%;
+        left: -100%;
+        top: 112%;
         background-color: hsl(180, 5%, 96%);
         border-radius: 10%;
         opacity: 0;
         transition: 0.5s;
         -webkit-transition: .5s;
         -moz-transition: .5s;
+        box-shadow: 0px 0px 10px rgb(97, 96, 96);
         > i {
           position: absolute;
           left: 50%;
@@ -160,14 +177,7 @@ export default {
         opacity: 1;
         z-index: 10;
       }
-    }
-    
-    .avatar {
-      display: block;
-      width: 30px;
-      height: 30px;
-      background-color: blue;
-      border-radius: 50%;
+
     }
   }
 
@@ -193,8 +203,6 @@ export default {
     position: relative;
     background-color: #eaedf1;
   }
-  .el-footer {
-    background-color: #373d41;
-  }
+
 
 </style>
